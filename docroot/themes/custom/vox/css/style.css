@@ -2,3 +2,62 @@
  * If using a CSS pre-processor, tell it to overwrite this file. If not, place
  * your custom CSS modifications here.
  */
+header.navbar {
+    min-height: 500px;
+    background-size: cover !important;
+}
+header .hero-text p{
+    font-size: 1em;
+}
+
+header .hero-text .search{
+    padding: 15px;
+}
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.search-container {
+    width: 350px;
+margin: auto;
+  }
+  
+  form .no-submit {
+    width: 180px;
+    align-items: center;
+    color: white;
+    right: 0;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    margin: 0 0;
+  }
+  
+  input.no-submit {
+    border: 1px solid white;
+    width: 300px;
+    padding: 9px 4px 9px 4px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+  }
+  
+  input[type="search"] {
+    border: none;
+    margin: 0;
+    padding: 7px 8px 7px 30px;
+    font-size: 16px;
+    color: inherit;
+    border-radius: 15px;
+  }
+  
+  input[type="search"]:focus {
+    box-shadow: 0 0 3px 0 #3f69a8;
+    border-color: #3f69a8;
+    outline: none;
+  }

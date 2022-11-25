@@ -62,8 +62,17 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
-    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
-      Banner
+    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner" style="background: url('{{ banner_image }}')">
+        <div class="hero-text">
+          <h1>{{ banner_title }}</h1>
+         <div class="search-container">
+          <form class="no-submit">
+            <input class="no-submit" type="search" placeholder="Example Website, Mobile App" method="GET">
+            <button>Search</button>
+          </form>
+        </div>
+          <p>{{ banner_subtitle }}</p>
+        </div>
     </header>
   {% endblock %}
 {% endif %}

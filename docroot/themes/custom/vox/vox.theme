@@ -6,3 +6,21 @@
  *
  * Place your custom PHP code in this file.
  */
+use Drupal\config_pages\Entity\ConfigPages;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+
+function vox_preprocess_page(&$variables) {
+    $settings = ConfigPages::config('banner_homepage');
+    if (!empty($settings)) {
+        $settings = $settings->toArray();
+        $banner_image = $settings['field_banner_image'];
+        if(isset($banner_image[0]['target_id'])){
+            $banner_load = File::load($banner_image[0]['target_id']);
+            $banner_path = file_create_url($banner_load->getFileUri());
+            $variables['banner_image'] = $banner_path;
+        }
+        $variables['banner_title'] = !empty($settings['field_title'][0]['value']) ? $settings['field_title'][0]['value'] : '';
+        $variables['banner_subtitle'] = !empty($settings['field_subtitle'][0]['value']) ? $settings['field_subtitle'][0]['value'] : '';
+    }
+}

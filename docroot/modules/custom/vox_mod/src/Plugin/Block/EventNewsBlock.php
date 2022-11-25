@@ -65,7 +65,7 @@ class EventNewsBlock extends BlockBase {
         'link' => '<a href="' . $path_alias_news . '">Detail</a>'
       ];
     }
-    dump($latest_news);
+    //dump($latest_news);
     $build = [];
     $build['#theme'] = 'event_news_block';
     $build['#latest_events'] = $latest_events;
