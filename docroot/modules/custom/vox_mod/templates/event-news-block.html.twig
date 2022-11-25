@@ -1,0 +1,26 @@
+<div class="row">
+    {% for event_item in latest_events %}
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ file_url(event_item.image ) }}" width="100%" height="auto">
+            <h3>{{ event_item.title }}</h3>
+            <small>{{ event_item.start_date }} {{ event_item.end_date }}</small>
+            {{ event_item.body|raw }}
+            {{ event_item.link|raw }}
+        </div>
+        
+    </div>
+    {% endfor %}
+    {% for news_item in latest_news %}
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ file_url(news_item.image ) }}" width="100%" height="auto">
+            <h3>{{ news_item.title }}</h3>
+            <small>{{ news_item.publish_date }}</small>
+            {{ news_item.body|raw }}
+            {{ news_item.link|raw }}
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>

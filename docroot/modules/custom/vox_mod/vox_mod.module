@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function vox_mod_theme($existing, $type, $theme, $path) {
+  return [
+    'event_news_block' => [
+      'variables' => [
+        'content' => NULL,
+        'latest_events' => NULL,
+        'latest_news' => NULL,
+      ],
+    ],
+  ];
+}

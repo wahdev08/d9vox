@@ -1,0 +1,5 @@
+name: 'VOX'
+type: module
+description: 'VOX custom module'
+core_version_requirement: ^8 || ^9
+package: 'Custom'
