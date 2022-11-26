@@ -3,6 +3,9 @@
 namespace Drupal\vox_mod\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
  * Provides a 'Event News' Block.
@@ -21,15 +24,34 @@ class EventNewsBlock extends BlockBase {
   public function build() {
     $latest_events = [];
     $latest_news = [];
+    $now = new DrupalDateTime('now');
 
     // Get events
-    $nids = \Drupal::entityQuery('node')
-    ->condition('status', 1)
-    ->condition('type', 'event')
-    ->sort('field_event_date', 'DESC')
-    ->pager(2)
-    ->execute();
-    $events = \Drupal\node\Entity\Node::loadMultiple($nids);
+    $storage = \Drupal::service('entity_type.manager')->getStorage('node');
+    $query = $storage->getQuery()
+      ->condition('type', 'event')
+      ->condition('status', 1)
+      ->sort('field_event_date.value', 'ASC')
+      ->sort('field_event_date.end_value', 'ASC')
+      ->pager(2)
+      ->sort('created', 'ASC');
+
+    $date = new DrupalDateTime(); 
+    $date->setTimezone(new \DateTimeZone(DateTimeItemInterface::STORAGE_TIMEZONE)); 
+    $date = $date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+    
+    $and = $query->andConditionGroup()
+      ->condition('field_event_date.value', $date, '>')
+      ->notExists('field_event_date.end_value');
+ 
+    $or = $query->orConditionGroup()
+      ->condition($and)
+      ->condition('field_event_date.end_value', $date, '>');
+ 
+    $query->condition($or);
+ 
+    $ids = $query->execute();
+    $events = \Drupal\node\Entity\Node::loadMultiple($ids);
     
     foreach ($events as $event_item) {
       $nid = $event_item->ID();
