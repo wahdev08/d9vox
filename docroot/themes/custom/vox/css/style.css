@@ -19,6 +19,9 @@ header .hero-text .search{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 15px;
   }
 .search-container {
     width: 350px;
@@ -54,12 +57,27 @@ margin: auto;
     font-size: 16px;
     color: inherit;
     border-radius: 15px;
+    width: 75%;
+    float: left;
   }
-  
+  .search-container button{
+    border-radius: 0;
+    background: #fff;
+    padding: 7px;
+    border: 0;
+  }
+  .hero-text h1{
+    color: #fff;
+  }
+  .hero-text p{
+    clear: both;
+    color: #fff;
+    margin-top: 15px;
+  }
   input[type="search"]:focus {
     box-shadow: 0 0 3px 0 #3f69a8;
     border-color: #3f69a8;
-    outline: none;
+    outline: none;    
   }
   .card h3,
   .card small,
@@ -80,3 +98,4 @@ margin: auto;
     text-align: right;
     padding: 0 10px;
   }
+  
