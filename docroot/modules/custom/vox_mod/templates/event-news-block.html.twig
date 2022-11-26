@@ -6,7 +6,7 @@
             <h3>{{ event_item.title }}</h3>
             <small>{{ event_item.start_date }} {{ event_item.end_date }}</small>
             {{ event_item.body|raw }}
-            {{ event_item.link|raw }}
+            <div class="button">{{ event_item.link|raw }}</div>
         </div>
         
     </div>
@@ -18,7 +18,7 @@
             <h3>{{ news_item.title }}</h3>
             <small>{{ news_item.publish_date }}</small>
             {{ news_item.body|raw }}
-            {{ news_item.link|raw }}
+            <div class="button">{{ news_item.link|raw }}</div>            
         </div>
         
     </div>

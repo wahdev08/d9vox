@@ -1,0 +1,17 @@
+{% if related_nodes|length > 0 %}
+<div class="row">
+    <h3>{{ thetitle }}</h3>
+    <div class="related-listing">
+      {% for event_item in related_nodes %}
+            <div class="card">
+                {% if event_item.image %}
+                <img src="{{ file_url(event_item.image ) }}" width="100%" height="auto">
+                {% endif %}
+                <h3>{{ event_item.title }}</h3>
+                <small>{{ event_item.publish_date }} {{ event_item.start_date }} {{ event_item.end_date }}</small>
+                <div class="button">{{ event_item.link|raw }}</div>       
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

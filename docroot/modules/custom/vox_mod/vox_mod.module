@@ -12,5 +12,12 @@ function vox_mod_theme($existing, $type, $theme, $path) {
         'latest_news' => NULL,
       ],
     ],
+    'related_event_news_block' => [
+      'variables' => [
+        'content' => NULL,
+        'thetitle' => NULL,
+        'related_nodes' => NULL,
+      ],
+    ],
   ];
 }
